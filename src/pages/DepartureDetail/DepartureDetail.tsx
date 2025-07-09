@@ -83,7 +83,7 @@ function DepartureDetail() {
                   </div>
                   
                   {addCategory === true && ( <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                        <div className="bg-white w-full max-w-5/12 h-5/12 shadow-lg p-[60px] relative">
+                        <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
                             <button
                             onClick={() => setAddCategory(false)}
                             className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
@@ -102,7 +102,7 @@ function DepartureDetail() {
                   </div>)}
 
                    {addType === true && ( <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                        <div className="bg-white w-full max-w-5/12 h-5/12 shadow-lg p-[60px] relative">
+                        <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
                             <button
                             onClick={() => setAddType(false)}
                             className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
@@ -122,7 +122,7 @@ function DepartureDetail() {
 
                   {addLocation === true && (
                       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
-                        <div className="bg-white w-full max-w-5/12 h-5/12 shadow-lg p-[60px] relative">
+                        <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
                             <button
                             onClick={() => setAddLocation(false)}
                             className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
