@@ -1,52 +1,64 @@
 import React from "react";
 import DefaultLayout from "../../layout/DefaultLayout";
-
+import dashboardIcon from "../../assets/icons/Home.svg";
+import packageIcon from "../../assets/icons/3d_box_fill.svg";
+import orderIcon from "../../assets/icons/group_share.svg";
+import rateIcon from "../../assets/icons/Star 166.svg";
+import doneIcon from "../../assets/icons/Done_ring_round.svg";
 const HomePage: React.FC = () => {
   return (
     <DefaultLayout>
-      <div className="min-h-screen bg-black">
-        {/* Hero Section */}
-        <div className="h-[60vh] flex items-center justify-center text-white text-center bg-cover bg-center">
-          <div className="container mx-auto px-4">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Plan Your Sacred Journey
-            </h1>
-            <h2 className="text-xl md:text-2xl mb-4">
-              Find the best Umrah packages tailored to your needs
-            </h2>
-            <button className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg mt-8 transition duration-300">
-              Explore Packages
-            </button>
-          </div>
+      <div className="w-full min-h-screen pb-16">
+        <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
+          <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
+          <h1 className="text-primary-blue font-medium">Dashboard</h1>
         </div>
+        <div className="w-full flex flex-col mt-[56px] h-full items-center">
 
-        {/* Features Section */}
-        <div className="container mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-            <div className="p-6 text-center border border-gray-200 rounded-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-3">Expert Guidance</h3>
-              <p className="text-gray-600">
-                Experienced guides to assist you throughout your journey
-              </p>
+          <div className="w-11/12 h-full grid grid-cols-3 mt-[66px] gap-4">
+            <div className="bg-white shadow-[-1px_6px_19px] shadow-black/25 w-full pt-[42px] pb-[33px] flex flex-col items-center justify-center">
+              <div className="flex">
+                <div className="w-[80px] h-[70px] border-e-2 border-black flex items-center">
+
+                <img src={packageIcon} alt="package icon" className="w-[61px] h-[61px] " />
+                </div>
+                <h1 className="text-[40px] flex items-center font-medium text-primary-blue ms-[21px]">10</h1>
+             </div>
+                <h1 className="capitalize text-[15px] mt-[22px] text-primary-blue">mitra terdaftar</h1>
             </div>
-            <div className="p-6 text-center border border-gray-200 rounded-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-3">
-                All-Inclusive Packages
-              </h3>
-              <p className="text-gray-600">
-                Complete arrangements including travel, accommodation, and visa
-              </p>
+            <div className="bg-white shadow-[-1px_6px_19px] shadow-black/25 w-full pt-[42px] pb-[33px] flex flex-col items-center justify-center">
+              <div className="flex">
+                <div className="w-[80px] h-[70px] border-e-2 border-black flex items-center">
+
+                <img src={orderIcon} alt="order icon" className="w-[61px] h-[61px] " />
+                </div>
+                <h1 className="text-[40px] flex items-center font-medium text-primary-blue ms-[21px]">10</h1>
+             </div>
+                <h1 className="capitalize text-[15px] mt-[22px] text-primary-blue">order berjalan</h1>
             </div>
-            <div className="p-6 text-center border border-gray-200 rounded-lg hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
-              <h3 className="text-xl font-semibold mb-3">24/7 Support</h3>
-              <p className="text-gray-600">
-                Round-the-clock assistance for a peaceful journey
-              </p>
+            <div className="bg-white shadow-[-1px_6px_19px] shadow-black/25 w-full pt-[42px] pb-[33px] flex flex-col items-center justify-center">
+              <div className="flex">
+                <div className="w-[80px] h-[70px] border-e-2 border-black flex items-center">
+
+                <img src={rateIcon} alt="rate icon" className="w-[61px] h-[61px] " />
+                </div>
+                <h1 className="text-[40px] flex items-center font-medium text-primary-blue ms-[21px]">10</h1>
+             </div>
+                <h1 className="capitalize text-[15px] mt-[22px] text-primary-blue">jamaah terdaftar</h1>
+            </div>
+            <div className="bg-white shadow-[-1px_6px_19px] shadow-black/25 w-full pt-[42px] pb-[33px] flex flex-col items-center justify-center">
+              <div className="flex">
+                <div className="w-[80px] h-[70px] border-e-2 border-black flex items-center">
+
+                <img src={doneIcon} alt="done icon" className="w-[61px] h-[61px] " />
+                </div>
+                <h1 className="text-[40px] flex items-center font-medium text-primary-blue ms-[21px]">10</h1>
+             </div>
+                <h1 className="capitalize text-[15px] mt-[22px] text-primary-blue">Order selesai</h1>
             </div>
           </div>
         </div>
-      </div>
+     </div>
     </DefaultLayout>
   );
 };
