@@ -10,7 +10,7 @@ export default function App() {
       <Router>
         <Routes>
           <Route
-            path="/home"
+            path="/"
             element={
               <>
                 <PageTitle title="PT CBL" />
