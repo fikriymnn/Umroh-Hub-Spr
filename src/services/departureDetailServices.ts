@@ -3,21 +3,21 @@ import { Category, Location, Type } from '../types/Departure';
 
 export async function addCategory(data: Category){
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addCategory`,
-        { data },
+        data,
         { withCredentials: true }
     );
 };
 
 export async function addType(data: Type){
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addType`,
-        { data },
+        data,
         { withCredentials: true }
     );
 };
 
 export async function addLocation(data: Location){
     return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addLocation`,
-        { data },
+        data ,
         { withCredentials: true }
     );
 };

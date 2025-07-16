@@ -7,6 +7,9 @@ function DepartureDetail() {
     categorys,
     types,
     locations,
+    addCategoryDeparture, setAddCategoryDeparture,
+    addTypeDeparture, setAddTypeDeparture,
+    addLocationDeparture, setAddLocationDeparture,
     categoryName, setCategoryName,
     typeName, setTypeName,
     locationName, setLocationName,
@@ -14,20 +17,17 @@ function DepartureDetail() {
     submitType,
     submitLocation
   } = useDepartureDetail();
-  const [addCategory, setAddCategory] = useState(false);
-  const [addType, setAddType] = useState(false);
-  const [addLocation, setAddLocation] = useState(false);
   return (
     <DefaultLayout>
       <div className="w-full h-screen">
         <div className="flex space-x-2 justify-end w-full">
-          <button onClick={() => setAddCategory(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
+          <button onClick={() => setAddCategoryDeparture(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
             Tambah Kategori
           </button>
-          <button onClick={() => setAddType(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
+          <button onClick={() => setAddTypeDeparture(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
             Tambah Tipe
           </button>
-          <button onClick={() => setAddLocation(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
+          <button onClick={() => setAddLocationDeparture(true)} className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px] mt-4 me-4">
             Tambah Lokasi
           </button>
         </div>
@@ -100,10 +100,10 @@ function DepartureDetail() {
             </table>
           </div>
 
-          {addCategory === true && (<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          {addCategoryDeparture === true && (<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
               <button
-                onClick={() => setAddCategory(false)}
+                onClick={() => setAddCategoryDeparture(false)}
                 className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
               >
                 ×
@@ -129,10 +129,10 @@ function DepartureDetail() {
             </div>
           </div>)}
 
-          {addType === true && (<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+          {addTypeDeparture === true && (<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
             <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
               <button
-                onClick={() => setAddType(false)}
+                onClick={() => setAddTypeDeparture(false)}
                 className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
               >
                 ×
@@ -148,7 +148,6 @@ function DepartureDetail() {
                   placeholder="Masukkan nama kategori"
                 />
                 <button
-                  type="submit"
                   onClick={submitType}
                   className="bg-gradient-to-r from-[#004492] to-[#0A6BDB] text-white py-2 px-4 rounded-[20px]"
                 >
@@ -158,11 +157,11 @@ function DepartureDetail() {
             </div>
           </div>)}
 
-          {addLocation === true && (
+          {addLocationDeparture === true && (
             <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
               <div className="bg-white w-full max-w-1/4 h-2/6 shadow-lg p-8 relative">
                 <button
-                  onClick={() => setAddLocation(false)}
+                  onClick={() => setAddLocationDeparture(false)}
                   className="absolute top-0 right-0 -translate-y-3 translate-x-3 rounded-[10px] text-white bg-[#004492] px-3 text-xl font-bold"
                 >
                   ×
