@@ -141,10 +141,11 @@ function Package() {
                   <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
                     
                     <div className="text-center">No</div>
-                    <div className="col-span-4 text-center">Nama Paket</div>
+                <div className="col-span-4 text-center">Nama Paket</div>
+                
+             <div className="col-span-3 text-center">Mitra</div>
                     <div className="col-span-2 text-center">Harga Paket</div>
-            <div className="text-center col-span-2">Kuota Tersisa</div>
-             <div className="col-span-3 text-center"></div>
+            <div className="text-center col-span-2">Jemaah</div>
                    
                 </div>
                   <div className={`items-center bg-white px-4 py-3 mt-3  hover:w-[1080px] shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4 transition-all duration-500 ease-in-out`}>
@@ -165,12 +166,11 @@ function Package() {
                     </div>
                     </div>
 
+                    <div className="font-semibold col-span-3 text-[#031B4E] text-center">
+                      Mitra Amanah
+                              </div>
                     <div className="font-semibold col-span-2 text-[#031B4E] text-center">Rp32.000.000</div>
                     <div className="font-semibold col-span-2 text-[#031B4E] text-center">10/20</div>
-                    <div className="flex col-span-3 justify-center gap-2">
-               
-
-                              </div>
                       </div>
                      
                 </div>

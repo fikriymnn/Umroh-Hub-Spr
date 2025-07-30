@@ -83,7 +83,7 @@ const HomePage: React.FC = () => {
   const gradientIds = ['promoGradient', 'plusGradient', 'regulerGradient'];
   return (
     <DefaultLayout>
-      <div className="w-full min-h-screen pb-16">
+      <div className="w-full min-h-screen bg-[#F6FCFF] pb-16">
         <div className="w-full h-[58px] flex space-x-[13px] pt-[17px] px-[23px] pb-[21px] shadow-[0px_2px_7.3px] shadow-black/25">
           <img src={dashboardIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
           <h1 className="text-primary-blue font-medium">Dashboard</h1>
