@@ -3,6 +3,8 @@ import PageTitle from "./components/PageTitle";
 import HomePage from "./pages/Home/HomePage";
 import Login from "./pages/Authentications/Login";
 import DepartureDetail from "./pages/DepartureDetail/DepartureDetail";
+import Package from "./pages/Package/Package";
+import NewPackage from "./pages/Package/NewPackage/NewPackage";
 
 export default function App() {
   return (
@@ -30,12 +32,32 @@ export default function App() {
             }
           />
           <Route
+            path="/PackageDetail"
+            element={
+              <>
+                <PageTitle title="PackageDetail" />
+
+                <Package />
+              </>
+            }
+          />
+          <Route
             path="/DepartureDetail"
             element={
               <>
                 <PageTitle title="DepartureDetail" />
 
                 <DepartureDetail />
+              </>
+            }
+          />
+           <Route
+            path="/PackageDetail/NewPackage"
+            element={
+              <>
+                <PageTitle title="NewPackage" />
+
+                <NewPackage/>
               </>
             }
           />

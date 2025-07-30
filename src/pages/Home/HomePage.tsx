@@ -646,6 +646,55 @@ const HomePage: React.FC = () => {
     </div>
             </div>
           </div>
+            <div className="mt-[42px] px-[37px] py-[16px] w-11/12 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
+            <h1 className="font-bold text-[14px]">Aktivitas</h1>
+            <div className="ms-[22px] mt-[21px] flex space-x-[38px]">
+              <div className="text-center">
+                <h1 className="text-[12px] font-semibold">Pesanan Paket</h1>
+                <div className="w-[40px] h-[6px] mt-1 mx-auto rounded-full bg-gradient-to-r from-[#00E0FF] to-[#0D78F3]" />
+              </div>
+              <h1 className="text-[12px] font-semibold">
+                Paket Aktif
+              </h1>
+              <h1 className="text-[12px] font-semibold">
+                Paket Promo
+              </h1>
+            </div>
+            <div className="mt-[17px]">
+              <table className="w-full text-sm">
+                <thead className="bg-[#DAFCFF] text-left">
+                  <tr>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Nama Paket</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Nama Pemesan</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Harga Bayar</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Status</th>
+                    <th className="capitalize py-[15px] ps-[23px] font-medium text-[12px]">Waktu Pesan</th>
+                  </tr>
+                </thead>
+                <tbody className="text-left">
+                  <tr>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Amanah</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Gunawan</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">Rp6.000.000</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Uang Muka</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">10/05/2025</td>
+                  </tr>
+                  <tr>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Umroh Plus Amanah</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Asep Hitla Husomad</td>
+                    <td className="py-[15px] ps-[23px] text-[12px]">Rp20.000.000</td>
+                    <td className="capitalize py-[15px] ps-[23px] text-[12px]">Lunas</td>
+                    <td className="py-[15px] px-4 text-[12px]">12/05/2025</td>
+                  </tr>
+                </tbody>
+              </table>
+              <div className="relative w-full">
+                <h2 className="text-[12px] absolute mt-3 right-0 font-bold bg-gradient-to-r from-[#004492] to-[#10F5EA] bg-clip-text text-transparent">
+                  lihat lebih banyak
+                </h2>
+              </div>
+            </div>
+          </div>
           <div/>
         </div>
      </div>

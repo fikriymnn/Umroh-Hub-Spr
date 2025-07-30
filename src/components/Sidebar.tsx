@@ -12,6 +12,8 @@ import detailIcon2 from '../assets/icons/Vector (2).svg'
 // import orderIcon2 from '../assets/icons/Vector (6).svg'
 // import hotelIcon2 from '../assets/icons/Component 7 (1).svg'
 // import hotelIcon from '../assets/icons/Component 7 (2).svg'
+import packageIcon from "../assets/icons/Vector (7).svg"
+import packageIcon2 from "../assets/icons/Vector (8).svg"
 function Sidebar() {
      const location = useLocation();
     const currentPath = location.pathname;
@@ -32,9 +34,9 @@ function Sidebar() {
               <div className="flex-flex-col space-y-[18px] mt-[88px]">
                   
                 <Link
-                  to="/home"
+                  to="/"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/home" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
@@ -53,7 +55,28 @@ function Sidebar() {
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
-
+                 <Link
+                  to="/PackageDetail"
+                  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/PackageDetail" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                `}
+                >
+                  <img
+                    src={currentPath === "/PackageDetail" ? packageIcon2 : packageIcon}
+                    alt="package"
+                    className="w-[24px]  ms-[30px] h-[24px]"
+                  />
+                  <h1
+                    className={`font-medium  text-left text-[20px] flex items-self-center 
+                     `}
+                  >
+                    Paket
+            </h1>
+              {/* Bulatan di kanan */}
+                {currentPath === "/Package" && (
+                  <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
+                )}
+                </Link>
                <Link
                 to="/AccountDetail"
                 className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
