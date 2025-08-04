@@ -199,7 +199,7 @@ const HomePage: React.FC = () => {
           </div>
           <div className="w-11/12 grid h-fit grid-cols-3 mt-[14px] gap-[14px]">
             <div className="w-full grid  gap-[12px] h-fit col-span-2">
-              <div className="w-full h-full  bg-blue-200">
+              <div className="w-full h-full  bg-white">
                 <div className="w-full flex justify-between items-center px-[30px] py-[15px]">
                   <h1 className="text-[14px] font-bold">Paket Terbaru</h1>
                   <h4 className="text-[10px] font-medium text-[#3679FE]">Lihat Lebih Banyak</h4>
@@ -245,7 +245,7 @@ const HomePage: React.FC = () => {
                 
               </div>
               <div className="w-full h-fit ">
-                  <div className="bg-blue-200 col-span-4 w-full px-[30px] py-[15px]">
+                  <div className="bg-white col-span-4 w-full px-[30px] py-[15px]">
                       <h2 className="text-[14px] font-bold">Pendapatan Bulanan</h2>
                 <div className="flex items-center justify-between mb-2">
                         <h2 className="text-[8px] ms-[20px] font-bold">Jt</h2>
@@ -400,7 +400,7 @@ const HomePage: React.FC = () => {
                 </div>
                 </div>
             </div>
-            <div className="w-full h-fit bg-pink-100  px-[30px] pt-[15px] pb-[75px]">
+            <div className="w-full h-fit bg-white  px-[30px] pt-[15px] pb-[75px]">
               <div className="flex justify-between">
 
                 <h1 className="text-[14px] font-bold">Statistik Paket</h1>
@@ -511,9 +511,9 @@ const HomePage: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-11/12  bg-red-100 mt-[14px] gap-[14px] px-[30px] pt-[15px] pb-[48px]">
+          <div className="w-11/12 bg-white mt-[14px] gap-[14px] px-[30px] pt-[15px] pb-[48px]">
             <h2 className="text-[14px] font-bold">Forum</h2>
-            <div className="flex space-x-4 max-w-full overflow-x-auto scrollbar-hide pt-4">
+            <div className="flex space-x-4 max-w-full overflow-x-auto scrollbar-hide pt-4 p-2">
 
              <div className="bg-white shadow-black/25 shadow-[0px_1px_12px] rounded-xl p-6 max-w-2/5 space-y-4">
       <div className="flex items-center space-x-4">
@@ -646,7 +646,7 @@ const HomePage: React.FC = () => {
     </div>
             </div>
           </div>
-            <div className="mt-[42px] px-[37px] py-[16px] w-11/12 h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
+            <div className="mt-[42px] px-[37px] py-[16px] w-11/12 bg-white h-fit pb-10 shadow-[-5px_2px_14px] shadow-black/25 rounded-xl">
             <h1 className="font-bold text-[14px]">Aktivitas</h1>
             <div className="ms-[22px] mt-[21px] flex space-x-[38px]">
               <div className="text-center">

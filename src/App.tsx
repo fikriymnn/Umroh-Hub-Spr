@@ -5,6 +5,7 @@ import Login from "./pages/Authentications/Login";
 import DepartureDetail from "./pages/DepartureDetail/DepartureDetail";
 import Package from "./pages/Package/Package";
 import NewPackage from "./pages/Package/NewPackage/NewPackage";
+import DetailNewPackage from "./pages/Package/NewPackage/[id]/DetailPackage";
 
 export default function App() {
   return (
@@ -58,6 +59,16 @@ export default function App() {
                 <PageTitle title="NewPackage" />
 
                 <NewPackage/>
+              </>
+            }
+          />
+            <Route
+            path="/PackageDetail/NewPackage/:id"
+            element={
+              <>
+                <PageTitle title="NewPackage" />
+
+                <DetailNewPackage/>
               </>
             }
           />
