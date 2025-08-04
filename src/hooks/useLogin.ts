@@ -24,11 +24,15 @@ const useLogin = () => {
             alert('Login berhasil');
             navigate('/home');
         } catch (error) {
-            if (isAxiosError(error)) {
-                alert('Login gagal');
-                console.log(`Error: ${error.response?.data.message}`);
-            }
-        }
+    if (isAxiosError(error)) {
+        console.log('Error response:', error.response?.data);
+        alert(error.response?.data?.message || 'Login gagal');
+    } else {
+        console.error('Unexpected error:', error);
+        alert('Terjadi kesalahan tak terduga');
+    }
+}
+
     };
 
     return {

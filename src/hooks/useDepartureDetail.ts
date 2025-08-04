@@ -7,6 +7,9 @@ const useDepartureDetail = () => {
     const [categorys, setCategorys] = useState<Category[]>([]);
     const [types, setTypes] = useState<Type[]>([]);
     const [locations, setLocations] = useState<Location[]>([]);
+    const [addCategoryDeparture, setAddCategoryDeparture] = useState(false);
+    const [addTypeDeparture, setAddTypeDeparture] = useState(false);
+    const [addLocationDeparture, setAddLocationDeparture] = useState(false);
     const [categoryName, setCategoryName] = useState('')
     const [typeName, setTypeName] = useState('');
     const [locationName, setLocationName] = useState('');
@@ -53,47 +56,62 @@ const useDepartureDetail = () => {
         }
     };
 
-    const submitCategory = async () => {
+    const submitCategory = async (e: React.FormEvent) => {
+        e.preventDefault();
+
         try {
             const res = await addCategory({
                 category_name: categoryName
             });
-            alert('Berhasil kirim data category');
+            alert('Berhasil menambahkan category');
             console.log(res);
+            setCategoryName('');
+            setAddCategoryDeparture(false);
+            fetchCategory();
         } catch (error) {
             alert('Gagal kirim data category');
             if (isAxiosError(error)) {
-                console.log(`Error: ${error}`);
+                console.log(`Error: ${error.response?.data}`);
             }
         }
     };
 
-    const submitType = async () => {
+    const submitType = async (e: React.FormEvent) => {
+        e.preventDefault();
+
         try {
             const res = await addType({
                 type_name: typeName
             });
-            alert('Berhasil kirim data type');
+            alert('Berhasil menambahkan tipe');
             console.log(res);
+            setTypeName('');
+            setAddTypeDeparture(false);
+            fetchType();
         } catch (error) {
             alert('Gagal kirim data type');
             if (isAxiosError(error)) {
-                console.log(`Error: ${error}`);
+                console.log(`Error: ${error.response?.data.message}`);
             }
         }
     };
 
-    const submitLocation = async () => {
+    const submitLocation = async (e: React.FormEvent) => {
+        e.preventDefault();
+
         try {
             const res = await addLocation({
                 location_name: locationName
             });
-            alert('Berhasil kirim data location');
+            alert('Berhasil menambahkan lokasi');
             console.log(res);
+            setLocationName('');
+            setAddLocationDeparture(false);
+            fetchLocation();
         } catch (error) {
             alert('Gagal kirim data location');
             if (isAxiosError(error)) {
-                console.log(`Error: ${error}`);
+                console.log(`Error: ${error.response?.data.message}`);
             }
         }
     };
@@ -102,6 +120,9 @@ const useDepartureDetail = () => {
         categorys, setCategorys,
         types, setTypes,
         locations, setLocations,
+        addCategoryDeparture, setAddCategoryDeparture,
+        addTypeDeparture, setAddTypeDeparture,
+        addLocationDeparture, setAddLocationDeparture,
         categoryName, setCategoryName,
         typeName, setTypeName,
         locationName, setLocationName,
