@@ -1,15 +1,15 @@
 import axios from "axios";
 import { Package } from "../types/Package";
 
-export const addPackage = async (data: Package) => {
-    return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addPackage`, 
-        data,
+export const getAllPackages = async (filter: string) => {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getPackage?package_status=${filter}`,
         {withCredentials: true}
     );
 };
 
-export const getAllPackageMitra = async () => {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/packageMitra`,
+export const addPackage = async (data: Package) => {
+    return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addPackage`, 
+        data,
         {withCredentials: true}
     );
 };
