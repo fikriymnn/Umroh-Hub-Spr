@@ -14,7 +14,7 @@ export const addPackage = async (data: Package) => {
     );
 };
 
-export const getOnePackageMitra = async (id: number | string) => {
+export const getOnePackage = async (id: number | string) => {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getOnePackageUmroh/${id}`,
         {withCredentials: true}
     );

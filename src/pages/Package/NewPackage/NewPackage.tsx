@@ -7,8 +7,8 @@ import useNewPackage from "../../../hooks/package/useNewPackage";
 
 const NewPackage: React.FC = () => {
   const {
-    packages, setPackages,
-    filter, setFilter,
+    packages,
+    filter,
     handleFilter
   } = useNewPackage();
 

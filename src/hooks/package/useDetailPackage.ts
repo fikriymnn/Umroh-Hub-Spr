@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Package } from '../../types/Package';
 import { useParams } from 'react-router';
-import { getOnePackageMitra } from '../../services/packagesServices';
+import { getOnePackage } from '../../services/packagesServices';
 import axios from 'axios';
 
 const useDetailPackage = () => {
@@ -29,9 +29,9 @@ const useDetailPackage = () => {
         async function fetchPackage() {
             try {
                 if (id) {
-                    const res = await getOnePackageMitra(id);
+                    const res = await getOnePackage(id);
                     console.log(res);
-                    setPackages(res.data.data);
+                    setPackages(res.data.data.detailPackage);
                 }
             } catch (error) {
                 if (axios.isAxiosError(error)) {
