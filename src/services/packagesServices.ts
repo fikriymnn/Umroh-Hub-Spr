@@ -7,15 +7,15 @@ export const getAllPackages = async (filter: string) => {
     );
 };
 
-export const addPackage = async (data: Package) => {
-    return await axios.post(`${import.meta.env.VITE_PUBLIC_URL}/addPackage`, 
-        data,
+export const getOnePackage = async (id: number | string) => {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getOnePackageUmroh/${id}`,
         {withCredentials: true}
     );
 };
 
-export const getOnePackage = async (id: number | string) => {
-    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getOnePackageUmroh/${id}`,
+export const rejectedPackage = async (id: number | undefined, payload: { admin_note: string }) => {
+    return await axios.put(`${import.meta.env.VITE_PUBLIC_URL}/rejectPackage/${id}`,
+        payload,
         {withCredentials: true}
     );
 };

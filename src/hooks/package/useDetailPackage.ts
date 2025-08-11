@@ -2,13 +2,14 @@
 import { useEffect, useState } from 'react'
 import { Package } from '../../types/Package';
 import { useParams } from 'react-router';
-import { getOnePackage } from '../../services/packagesServices';
-import axios from 'axios';
+import { getOnePackage, rejectedPackage } from '../../services/packagesServices';
+import axios, { isAxiosError } from 'axios';
 
 const useDetailPackage = () => {
     const {id} = useParams();
     const [packages, setPackages] = useState<Package>();
     const [currentPage, setCurrentPage] = useState(1);
+    const [adminNote, setAdminNote] = useState('');
     const itemPages = 4;
 
     const schedule = packages?.package_schedules?.flatMap((schedule: any) =>
@@ -43,12 +44,27 @@ const useDetailPackage = () => {
         fetchPackage();
     }, []);
 
+    const handleSubmitReason = async () => {
+        try {
+            const res = await rejectedPackage(packages?.id, { admin_note: adminNote });
+            console.log(res);
+            alert('Berhasil kirim alasan penolakan');
+        } catch (error) {
+            if (isAxiosError(error)) {
+                alert(error.response?.data.message);
+                console.log(error.response?.data);
+            }
+        }
+    };
+
     return {
         packages, setPackages,
         currentPage, setCurrentPage,
         itemPages,
         totalPages,
-        currentItems
+        currentItems,
+        adminNote, setAdminNote,
+        handleSubmitReason
     };
 };
 
