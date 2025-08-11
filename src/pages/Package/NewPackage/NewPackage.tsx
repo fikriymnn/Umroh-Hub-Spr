@@ -9,7 +9,8 @@ const NewPackage: React.FC = () => {
   const {
     packages,
     filter,
-    handleFilter
+    handleFilter,
+    handleDetail
   } = useNewPackage();
 
   return (
@@ -98,7 +99,9 @@ const NewPackage: React.FC = () => {
                 </div>
 
                 <div className="flex items-center w-[250px] justify-center">
-                  <button className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white font-semibold text-sm px-4 py-2 rounded-full">
+                  <button
+                    onClick={() => handleDetail(Number(pckg?.id))}
+                    className="bg-gradient-to-r from-[#003CB4] to-[#3679FE] text-white font-semibold text-sm px-4 py-2 rounded-full">
                     Lihat Detail
                   </button>
                 </div>

@@ -20,6 +20,13 @@ export const rejectedPackage = async (id: number | undefined, payload: { admin_n
     );
 };
 
+export const acceptPackage = async (id: number | undefined, payload: { package_status: string }) => {
+    return await axios.put(`${import.meta.env.VITE_PUBLIC_URL}/updateStatusPackage/${id}`,
+        payload,
+        {withCredentials: true}
+    );
+};
+
 export const getAllCategory = async () => {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getAllCategory`)
 }; 

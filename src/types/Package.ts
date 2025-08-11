@@ -89,6 +89,7 @@ export interface Mitra {
     id_location_departure?: number;
     id_category_departure?: number;
     package_name?: string;
+    package_status?: string;
     description?: string;
     date_departure?: string;
     airline?: string;

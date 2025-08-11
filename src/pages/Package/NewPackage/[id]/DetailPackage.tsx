@@ -17,7 +17,8 @@ const DetailNewPackage: React.FC = () => {
     packages,
     currentPage, setCurrentPage,
     totalPages,
-    currentItems
+    currentItems,
+    handleAcceptPackage
   } = useDetailPackage();
 
   const [showModal, setShowModal] = useState(false);
@@ -36,8 +37,22 @@ const DetailNewPackage: React.FC = () => {
           <h1 className="text-primary-blue font-medium">Package</h1>
         </div>
         <div className=" mt-[69px] mb-[78px] flex justify-center space-x-[54px] ">
-          <button onClick={() => setShowModal(true)} className="w-[118px] py-1 bg-gradient-to-br from-[#B40000] to-[#FE3636] rounded-full text-white font-medium ">Tolak</button>
-          <button className="w-[118px] py-1 bg-gradient-to-br from-[#003CB4] to-[#3679FE] rounded-full text-white font-medium ">Terima</button>
+          {packages?.package_status !== 'active' && packages?.package_status !== 'rejected' && (
+            <>
+              <button
+                onClick={() => setShowModal(true)}
+                className="w-[118px] py-1 bg-gradient-to-br from-[#B40000] to-[#FE3636] rounded-full text-white font-medium "
+              >
+                Tolak
+              </button>
+              <button
+                onClick={() => handleAcceptPackage('active')}
+                className="w-[118px] py-1 bg-gradient-to-br from-[#003CB4] to-[#3679FE] rounded-full text-white font-medium "
+              >
+                Terima
+              </button>
+            </>
+          )}
         </div>
         {packages && (
           <div className="w-11/12 bg-white shadow-[0px_4px_19.5px] shadow-black/25 px-[55px] py-[29px] ms-[39px] mt-[30px] h-full items-center">

@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { Package } from "../../types/Package";
 import { getAllPackages } from "../../services/packagesServices";
 import { isAxiosError } from "axios";
+import { useNavigate } from "react-router";
 
 type PackageFilter = 'checked' | 'active' | 'rejected';
 
 const useNewPackage = () => {
+    const navigate = useNavigate();
     const [packages, setPackages] = useState<Package[]>();
     const [filter, setFilter] = useState('checked');
 
@@ -29,10 +31,15 @@ const useNewPackage = () => {
         setFilter(newFilter);
     };
 
+    const handleDetail = (id: number) => {
+        navigate(`/PackageDetail/NewPackage/${id}`);
+    };
+
     return {
         packages, setPackages,
         filter, setFilter,
-        handleFilter
+        handleFilter,
+        handleDetail
     };
 };
 

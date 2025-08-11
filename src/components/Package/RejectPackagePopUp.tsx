@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import useDetailPackage from '../../hooks/package/useDetailPackage';
 type RejectProps = {
     isVisible: boolean;
@@ -16,25 +16,14 @@ const predefinedReasons = [
 const RejectPackagePopUp: React.FC<RejectProps> = ({ isVisible, onClose }) => {
     const {
         adminNote, setAdminNote,
-        handleSubmitReason
+        selectedReasons,
+        handleRejectPackage,
+        addReason,
+        handleAddRejectReason
     } = useDetailPackage();
-    const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
-    const [customReason, setCustomReason] = useState('');
+    // const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
+    // const [customReason, setCustomReason] = useState('');
     if (!isVisible) return null;
-
-    const addReason = (reason: string) => {
-        if (!selectedReasons.includes(reason)) {
-            setSelectedReasons([...selectedReasons, reason]);
-        }
-    };
-
-    const handleAddRejectReason = () => {
-        const trimmed = customReason.trim();
-        if (trimmed && !selectedReasons.includes(trimmed)) {
-            setSelectedReasons([...selectedReasons, trimmed]);
-            setCustomReason('');
-        }
-    };
 
     return (
 
@@ -99,7 +88,7 @@ const RejectPackagePopUp: React.FC<RejectProps> = ({ isVisible, onClose }) => {
                         </div>
                         <div className="flex justify-end mt-6">
                             <button
-                                onClick={handleSubmitReason}
+                                onClick={handleRejectPackage}
                                 className="bg-gradient-to-br from-[#003CB4] to-[#3679FE] text-white w-[118px] py-1 rounded-full text-sm font-medium"
                             >
                                 Kirim

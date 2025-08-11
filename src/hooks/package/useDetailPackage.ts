@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { Package } from '../../types/Package';
 import { useParams } from 'react-router';
-import { getOnePackage, rejectedPackage } from '../../services/packagesServices';
+import { acceptPackage, getOnePackage, rejectedPackage } from '../../services/packagesServices';
 import axios, { isAxiosError } from 'axios';
 
 const useDetailPackage = () => {
@@ -10,6 +10,7 @@ const useDetailPackage = () => {
     const [packages, setPackages] = useState<Package>();
     const [currentPage, setCurrentPage] = useState(1);
     const [adminNote, setAdminNote] = useState('');
+    const [selectedReasons, setSelectedReasons] = useState<string[]>([]);
     const itemPages = 4;
 
     const schedule = packages?.package_schedules?.flatMap((schedule: any) =>
@@ -44,11 +45,49 @@ const useDetailPackage = () => {
         fetchPackage();
     }, []);
 
-    const handleSubmitReason = async () => {
+    const handleRejectPackage = async () => {
+        const combinedNote = [...selectedReasons, adminNote]
+        .filter(Boolean)
+        .join(', ');
+
+        console.log(`Admin Note: ${combinedNote}`);
+        
         try {
-            const res = await rejectedPackage(packages?.id, { admin_note: adminNote });
+            const res = await rejectedPackage(packages?.id, { admin_note: combinedNote });
             console.log(res);
             alert('Berhasil kirim alasan penolakan');
+        } catch (error) {
+            if (isAxiosError(error)) {
+                alert(error.response?.data.message);
+                console.log(error.response?.data);
+            }
+        }
+    };
+
+    const addReason = (reason: string) => {
+        setSelectedReasons((prev) => {
+            if (!prev.includes(reason)) {
+                return [...prev, reason];
+            }
+            return prev;
+        });
+    };
+
+    const handleAddRejectReason = () => {
+        const trimmed = adminNote.trim();
+        if (trimmed && !selectedReasons.includes(trimmed)) {
+            setSelectedReasons([...selectedReasons, trimmed]);
+            setAdminNote('');
+        }
+    };
+
+    const handleAcceptPackage = async (package_status: string) => {
+        console.log(`Status paket: ${package_status}`);
+        
+        try {
+            const res = await acceptPackage(packages?.id, {package_status});
+            console.log(res);
+            alert('Berhasil terima paket umroh');
         } catch (error) {
             if (isAxiosError(error)) {
                 alert(error.response?.data.message);
@@ -64,7 +103,11 @@ const useDetailPackage = () => {
         totalPages,
         currentItems,
         adminNote, setAdminNote,
-        handleSubmitReason
+        selectedReasons, setSelectedReasons,
+        handleRejectPackage,
+        addReason,
+        handleAddRejectReason,
+        handleAcceptPackage
     };
 };
 

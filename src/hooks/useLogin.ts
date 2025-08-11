@@ -22,7 +22,7 @@ const useLogin = () => {
             const res = await Login(payload);
             console.log(res);
             alert('Login berhasil');
-            navigate('/home');
+            navigate('/');
         } catch (error) {
     if (isAxiosError(error)) {
         console.log('Error response:', error.response?.data);
