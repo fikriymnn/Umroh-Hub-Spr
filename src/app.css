@@ -1,6 +1,6 @@
 body {
     font-family: 'Montserrat', sans-serif;
-    background-color: white;
+    background-color: #F6FCFF;
   }  
 .background-div {
   position: relative;
@@ -71,7 +71,7 @@ body {
 }
 
 .active-nav {
-  background-color: white;
+  background-color: #F6FCFF;
   padding: 12px;
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
@@ -87,7 +87,7 @@ body {
   height: 50px;
   background-color: transparent;
   border-radius: 50%;
-  box-shadow: 35px 35px 0 10px white;
+  box-shadow: 35px 35px 0 10px #F6FCFF;
   transition: box-shadow 0.3s ease;
   z-index: -1;
 }
@@ -95,13 +95,13 @@ body {
 .active-nav::before {
   top: -50px;
   right: 0;
-  box-shadow: 35px 35px 0 10px white;
+  box-shadow: 35px 35px 0 10px #F6FCFF;
 }
 
 .active-nav::after {
   bottom: -50px;
   right: 0;
-  box-shadow: 35px -35px 0 10px white;
+  box-shadow: 35px -35px 0 10px #F6FCFF;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
@@ -111,3 +111,12 @@ body {
   -ms-overflow-style: none;  
   scrollbar-width: none;     
 }
+
+.CircularProgressbar-trail {
+  stroke-width: 6px !important; 
+}
+
+.CircularProgressbar-path {
+  stroke-width: 12px !important; 
+}
+

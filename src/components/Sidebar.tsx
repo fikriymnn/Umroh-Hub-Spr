@@ -4,6 +4,8 @@ import homeIcon from '../assets/icons/Home.svg'
 import homeIcon2 from '../assets/icons/Home (1).svg'
 import detailIcon from '../assets/icons/Vector (1).svg'
 import detailIcon2 from '../assets/icons/Vector (2).svg'
+import jemaahIcon from '../assets/icons/user-single-neutral-male--close-geometric-human-person-single-up-user-male (1).svg'
+import jemaahIcon2 from '../assets/icons/user-single-neutral-male--close-geometric-human-person-single-up-user-male.svg'
 // import packageIcon from '../assets/icons/Vector (3).svg'
 // import packageIcon2 from '../assets/icons/Vector (4).svg'
 // import orderIcon from '../assets/icons/Vector (5).svg'
@@ -36,7 +38,7 @@ function Sidebar() {
                 <Link
                   to="/"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
@@ -58,7 +60,7 @@ function Sidebar() {
                  <Link
                   to="/PackageDetail"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/PackageDetail" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/PackageDetail" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
@@ -73,14 +75,36 @@ function Sidebar() {
                     Paket
             </h1>
               {/* Bulatan di kanan */}
-                {currentPath === "/Package" && (
+                {currentPath === "/PackageDetail" && (
+                  <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
+                )}
+          </Link>
+          <Link
+                  to="/JemaahData"
+                  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/JemaahData" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                `}
+                >
+                  <img
+                    src={currentPath === "/JemaahData" ? jemaahIcon2 : jemaahIcon}
+                    alt="package"
+                    className="w-[24px]  ms-[30px] h-[24px]"
+                  />
+                  <h1
+                    className={`font-medium  text-left text-[20px] flex items-self-center 
+                     `}
+                  >
+                    Jemaah
+            </h1>
+              {/* Bulatan di kanan */}
+                {currentPath === "/JemaahData" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
                <Link
                 to="/AccountDetail"
                 className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/AccountDetail" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/AccountDetail" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
               >
                 <img
@@ -101,7 +125,7 @@ function Sidebar() {
            <Link
                   to="/DepartureDetail"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/DepartureDetail" ? "bg-white text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/DepartureDetail" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
