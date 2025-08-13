@@ -6,6 +6,7 @@ import DepartureDetail from "./pages/DepartureDetail/DepartureDetail";
 import Package from "./pages/Package/Package";
 import NewPackage from "./pages/Package/NewPackage/NewPackage";
 import DetailNewPackage from "./pages/Package/NewPackage/[id]/DetailPackage";
+import JemaahData from "./pages/Jemaah/JemaahData";
 
 export default function App() {
   return (
@@ -69,6 +70,16 @@ export default function App() {
                 <PageTitle title="NewPackage" />
 
                 <DetailNewPackage/>
+              </>
+            }
+          />
+           <Route
+            path="/JemaahData"
+            element={
+              <>
+                <PageTitle title="Jemaah Data" />
+
+                <JemaahData/>
               </>
             }
           />
