@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 import React, { useState } from 'react'
 import DefaultLayout from '../../layout/DefaultLayout'
 
@@ -16,6 +17,7 @@ import { FaUser } from "react-icons/fa";
 import { FiDownloadCloud} from "react-icons/fi";
 import { MdOutlineFilterList } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
+import { BsThreeDotsVertical } from "react-icons/bs";
 function JemaahData() {
 
   const total = 565;
@@ -47,6 +49,26 @@ function JemaahData() {
 
   const FilterOptions = ["Terbaru", "Terlama", "Ikhwan", "Akhwat"];
 
+    const [openMenu, setOpenMenu] = useState<number | null>(null);
+    const Menus = ["Lihat Detail", "Beri Tanda"]
+ const [showCalendar, setShowCalendar] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedMonth, setSelectedMonth] = useState(selectedDate.getMonth());
+  const [selectedYear, setSelectedYear] = useState(selectedDate.getFullYear());
+
+  const months = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+
+  const daysOfWeek = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
+
+  const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
+  const firstDay = (new Date(selectedYear, selectedMonth, 1).getDay() + 6) % 7; // Senin = 0
+
+  const handleDayClick = (day:number) => {
+    setSelectedDate(new Date(selectedYear, selectedMonth, day));
+  };
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">
@@ -159,9 +181,93 @@ function JemaahData() {
                               </div>
                           )}
         </div>
-          <button className="flex items-center text-[#344054] font-medium gap-1 border px-3 py-2 rounded-lg text-sm">
-            <FiDownloadCloud className='w-4 h-4'/> Export
-          </button>
+           <div className="">
+      {/* Tombol Export */}
+      <button
+        className="flex items-center text-[#344054] font-medium gap-1 border px-3 py-2 rounded-lg text-sm"
+        onClick={() => setShowCalendar(!showCalendar)}
+      >
+        <FiDownloadCloud className="w-4 h-4" /> Export
+      </button>
+
+      {/* Popup Kalender */}
+      {showCalendar && (
+       <div className="fixed inset-0 bg-black/25 z-50 flex items-center justify-center">
+                                      
+            <div className=" bg-white rounded-[30px] p-6 shadow-lg z-50 w-[350px]">
+            <div className="flex justify-between items-start">
+                <div className="flex flex-col space-y-1">
+                <h3 className="text-lg font-bold">Pilih Tanggal</h3>
+                {/* Dropdown Bulan & Tahun */}
+            <div className="flex gap-2">
+                <select
+                value={selectedMonth}
+                onChange={(e) => setSelectedMonth(parseInt(e.target.value))}
+                className="bg-[#EBEBEB] font-medium rounded-md px-2 py-1 text-sm"
+                >
+                {months.map((month, index) => (
+                    <option key={index} value={index}>{month}</option>
+                ))}
+                </select>
+                <select
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(parseInt(e.target.value))}
+                className="bg-[#EBEBEB] font-medium rounded-md px-2 py-1 text-sm"
+                >
+                {[2025, 2024, 2023].map((year) => (
+                    <option key={year} value={year}>{year}</option>
+                ))}
+                </select>
+            </div>
+
+                </div>
+                {/* Kotak Hari */}
+                <div className="bg-gradient-to-bl from-[#3679FE] to-[#204898] text-white w-[70px] h-[59px] rounded-lg flex items-center justify-center text-2xl font-bold">
+                {String(selectedDate.getDate()).padStart(2, "0")}
+                </div>
+            </div>
+
+            
+            {/* Grid Hari */}
+            <div className="grid grid-cols-7 text-center gap-1 mt-4">
+                {daysOfWeek.map((d) => (
+                <div key={d} className="font-medium text-sm">{d}</div>
+                ))}
+
+                {/* Spacer untuk awal bulan */}
+                {Array.from({ length: firstDay }).map((_, i) => (
+                <div key={`empty-${i}`} />
+                ))}
+
+                {/* Tanggal */}
+                {Array.from({ length: daysInMonth }, (_, i) => {
+                const day = i + 1;
+                const isSelected =
+                    day === selectedDate.getDate() &&
+                    selectedMonth === selectedDate.getMonth() &&
+                    selectedYear === selectedDate.getFullYear();
+
+                    return (
+                        <button
+                            key={day}
+                            onClick={() => {handleDayClick(day);
+                    setShowCalendar(false);}
+                    }
+                    className={`p-1 rounded-md font-bold text-sm ${
+                        isSelected
+                        ? "bg-[#1B50BA] text-white"
+                        : "text-[#1B50BA] hover:bg-gray-100"
+                    }`}
+                    >
+                    {String(day).padStart(2, "0")}
+                    </button>
+                );
+                })}
+            </div>
+            </div>
+        </div>
+      )}
+    </div>
         </div>
       </div>
       <div className="overflow-x-auto">
@@ -179,8 +285,8 @@ function JemaahData() {
             </tr>
           </thead>
           <tbody>
-            {data.map((item, idx) => (
-              <tr key={idx} className="border-b text-[12px] font-medium last:border-none">
+            {data.map((item) => (
+              <tr key={item.id} className="border-b text-[12px] font-medium last:border-none">
                 <td className="p-3">{item.name}</td>
                 <td className="p-3">{item.email}</td>
                 <td className="p-3">{item.phone}</td>
@@ -203,7 +309,40 @@ function JemaahData() {
                     {item.status}
                   </span>
                 </td>
-                <td className="p-3 text-[#667085] text-lg">⋮</td>
+                    <td className="p-3 text-[#667085] text-lg relative">
+  <BsThreeDotsVertical
+    onClick={() =>
+      setOpenMenu(openMenu === item.id ? null : item.id)
+    }
+    className="cursor-pointer"
+  />
+
+  {openMenu === item.id && (
+    <div className="absolute top-2 right-9 w-fit border bg-white shadow-black/25 shadow-[0px_4px_16.1px_0px] z-10">
+      {Menus.map((option) => (
+        <div
+          key={option}
+          onClick={() => {
+            if (option === "Lihat Detail") {
+              console.log("Lihat Detail");
+            } else {
+              console.log("Beri Tanda");
+            }
+            setOpenMenu(null);
+          }}
+          className={`px-4 py-2 mt-[2px] cursor-pointer whitespace-nowrap text-[13px] font-medium ${
+            option === "Lihat Detail"
+              ? "hover:bg-gray-100 text-[#1B50BA]"
+              : "hover:bg-gray-100 text-[#1B50BA]"
+          }`}
+        >
+          {option}
+        </div>
+      ))}
+    </div>
+  )}
+</td>
+
               </tr>
             ))}
           </tbody>

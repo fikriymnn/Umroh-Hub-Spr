@@ -18,7 +18,8 @@ import packageIcon from "../assets/icons/Vector (7).svg"
 import packageIcon2 from "../assets/icons/Vector (8).svg"
 function Sidebar() {
      const location = useLocation();
-    const currentPath = location.pathname;
+  const currentPath = location.pathname;
+      const isJemaahDetail = currentPath.startsWith("/JemaahData/")
   //   const [isOpen, setIsOpen] = useState(false);
   //  const isDetailOrder = currentPath.startsWith("/Order/")
   return (
@@ -82,11 +83,11 @@ function Sidebar() {
           <Link
                   to="/JemaahData"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
-                  ${currentPath === "/JemaahData" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                  ${currentPath === "/JemaahData" || isJemaahDetail ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
                 `}
                 >
                   <img
-                    src={currentPath === "/JemaahData" ? jemaahIcon2 : jemaahIcon}
+                    src={currentPath === "/JemaahData" || isJemaahDetail ? jemaahIcon2 : jemaahIcon}
                     alt="package"
                     className="w-[24px]  ms-[30px] h-[24px]"
                   />
@@ -97,7 +98,7 @@ function Sidebar() {
                     Jemaah
             </h1>
               {/* Bulatan di kanan */}
-                {currentPath === "/JemaahData" && (
+                {currentPath === "/JemaahData" || isJemaahDetail && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
