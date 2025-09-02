@@ -2,10 +2,12 @@ import React from 'react'
 import { Link, useLocation } from 'react-router'
 import homeIcon from '../assets/icons/Home.svg'
 import homeIcon2 from '../assets/icons/Home (1).svg'
-import detailIcon from '../assets/icons/Vector (1).svg'
-import detailIcon2 from '../assets/icons/Vector (2).svg'
+// import detailIcon from '../assets/icons/Vector (1).svg'
+// import detailIcon2 from '../assets/icons/Vector (2).svg'
 import jemaahIcon from '../assets/icons/user-single-neutral-male--close-geometric-human-person-single-up-user-male (1).svg'
 import jemaahIcon2 from '../assets/icons/user-single-neutral-male--close-geometric-human-person-single-up-user-male.svg'
+import mitraIcon from "../assets/icons/user-group--user-group-meeting-leader (1).svg"
+import mitraIcon2 from "../assets/icons/user-group--user-group-meeting-leader (2).svg"
 // import packageIcon from '../assets/icons/Vector (3).svg'
 // import packageIcon2 from '../assets/icons/Vector (4).svg'
 // import orderIcon from '../assets/icons/Vector (5).svg'
@@ -43,7 +45,7 @@ function Sidebar() {
                 `}
                 >
                   <img
-                    src={currentPath === "/home" ? homeIcon : homeIcon2}
+                    src={currentPath === "/" ? homeIcon : homeIcon2}
                     alt="home"
                     className="w-[24px]  ms-[30px] h-[24px]"
                   />
@@ -102,7 +104,7 @@ function Sidebar() {
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
                 </Link>
-               <Link
+               {/* <Link
                 to="/AccountDetail"
                 className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
                   ${currentPath === "/AccountDetail" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
@@ -116,13 +118,32 @@ function Sidebar() {
                 <h1 className="font-medium text-left text-[20px]">
                   Profile
                 </h1>
-
-                {/* Bulatan di kanan */}
                 {currentPath === "/AccountDetail" && (
                   <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
                 )}
-              </Link>
-
+              </Link> */}
+                 <Link
+                  to="/Partners"
+                  className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
+                  ${currentPath === "/Partners" ? "bg-[#F6FCFF] text-primary-blue rounded-l-[30px] active-nav" : "text-white"}
+                `}
+                >
+                  <img
+                    src={currentPath === "/Partners" ? mitraIcon : mitraIcon2}
+                    alt="home"
+                    className="w-[24px]  ms-[30px] h-[24px]"
+                  />
+                  <h1
+                    className={`font-medium  text-left text-[20px] flex items-self-center 
+                     `}
+                  >
+                    Mitra
+            </h1>
+              {/* Bulatan di kanan */}
+                {currentPath === "/Partners" && (
+                  <div className="ml-auto w-[8px] h-[8px] rounded-full bg-primary-blue" />
+                )}
+                </Link>
            <Link
                   to="/DepartureDetail"
                   className={`flex items-center w-full p-4 space-x-[15px] transform transition-all duration-500 ease-in-out 
