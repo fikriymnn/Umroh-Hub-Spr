@@ -7,6 +7,8 @@ import Package from "./pages/Package/Package";
 import NewPackage from "./pages/Package/NewPackage/NewPackage";
 import DetailNewPackage from "./pages/Package/NewPackage/[id]/DetailPackage";
 import JemaahData from "./pages/Jemaah/JemaahData";
+import JemaahDetail from "./pages/Jemaah/[id]/JemaahDetail";
+import Partners from "./pages/Partners/Partners";
 
 export default function App() {
   return (
@@ -80,6 +82,26 @@ export default function App() {
                 <PageTitle title="Jemaah Data" />
 
                 <JemaahData/>
+              </>
+            }
+          />
+           <Route
+            path="/JemaahData/:id"
+            element={
+              <>
+                <PageTitle title="Jemaah Detail" />
+
+                <JemaahDetail/>
+              </>
+            }
+          />
+           <Route
+            path="/Partners"
+            element={
+              <>
+                <PageTitle title="Partners" />
+
+                <Partners/>
               </>
             }
           />
