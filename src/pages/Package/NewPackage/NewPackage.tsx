@@ -4,6 +4,7 @@ import packageIcon from "../../../assets/icons/Vector (3).svg";
 import packageImage from "../../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png";
 import arrowIcon from "../../../assets/icons/Arrow_left_long.svg";
 import useNewPackage from "../../../hooks/package/useNewPackage";
+import { formatDate } from "../../../utils/formatDate";
 
 const NewPackage: React.FC = () => {
   const {
@@ -86,7 +87,7 @@ const NewPackage: React.FC = () => {
                   <p className="font-bold">{pckg?.price}</p>
                   <div className="flex flex-col justify-center text-sm">
                     <p>Tanggal keberangkatan</p>
-                    <p className="font-semibold">{pckg?.date_departure}</p>
+                    <p className="font-semibold">{formatDate(String(pckg?.date_departure))}</p>
                   </div>
                 </div>
 
@@ -94,7 +95,7 @@ const NewPackage: React.FC = () => {
                   <p>{pckg?.quota}</p>
                   <div className="flex flex-col justify-center text-sm">
                     <p>Tanggal kepulangan</p>
-                    <p className="font-semibold">{pckg?.date_departure}</p>
+                    <p className="font-semibold">{formatDate(String(pckg?.date_arrival))}</p>
                   </div>
                 </div>
 

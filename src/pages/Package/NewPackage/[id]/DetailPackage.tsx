@@ -12,6 +12,7 @@ import { renderStarsHotels } from '../../../../utils/renderStarts';
 import TravelSchedule from "../../../../components/TravelSchedule";
 import RejectPackagePopUp from "../../../../components/Package/RejectPackagePopUp";
 import useDetailPackage from "../../../../hooks/package/useDetailPackage";
+import { formatDate } from "../../../../utils/formatDate";
 const DetailNewPackage: React.FC = () => {
   const {
     packages,
@@ -100,7 +101,7 @@ const DetailNewPackage: React.FC = () => {
                       Waktu Keberangkatan
                     </h1>
                     <h1 className="text-[20px] font-medium text-[#3B3B3B]">
-                      {packages?.date_departure}
+                      {formatDate(String(packages?.date_departure))}
                     </h1>
                   </div>
                 </div>

@@ -1,8 +1,8 @@
-import React from 'react'
 import DefaultLayout from '../../layout/DefaultLayout'
 import packageIcon from '../../assets/icons/Vector (8).svg'
 import { ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis } from 'recharts';
 import usePackage from '../../hooks/package/usePackage';
+import { Link } from 'react-router';
 
 function Package() {
   const {
@@ -137,25 +137,26 @@ function Package() {
               <h1 className="font-medium text-[15px] text-primary-blue">Paket Plus</h1>
               <h1 className="font-medium text-[15px] text-primary-blue">Paket Promo</h1>
             </div>
-            <div className="flex items-center space-x-[15px]">
-              <button className='bg-[#FF2A2A] w-[33px] h-[33px] rounded-full text-white font-medium'>8</button>
-              <h1 className="font-medium text-[15px] text-primary-blue">Paket Baru</h1>
-            </div>
-          </div>
-          {packages?.map((pckg, index) => (
-            <div className="" key={index}>
-              <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
-
-                <div className="text-center">No</div>
-                <div className="col-span-4 text-center">Nama Paket</div>
-
-                <div className="col-span-3 text-center">Mitra</div>
-                <div className="col-span-2 text-center">Harga Paket</div>
-                <div className="text-center col-span-2">Jemaah</div>
-
+            <Link to={'/PackageDetail/newPackage'}>
+              <div className="flex items-center space-x-[15px]">
+                <button className='bg-[#FF2A2A] w-[33px] h-[33px] rounded-full text-white font-medium'>8</button>
+                <h1 className="font-medium text-[15px] text-primary-blue">Paket Baru</h1>
               </div>
-              <div className={`items-center bg-white px-4 py-3 mt-3  hover:w-[1080px] shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4 transition-all duration-500 ease-in-out`}>
+            </Link>
+          </div>
+          <div className="">
+            <div className="grid grid-cols-12 bg-white text-[#031B4E] font-bold px-4 py-3 rounded-t-md shadow-[0px_0px_14.4px_2px] shadow-black/25">
 
+              <div className="text-center">No</div>
+              <div className="col-span-4 text-center">Nama Paket</div>
+
+              <div className="col-span-3 text-center">Mitra</div>
+              <div className="col-span-2 text-center">Harga Paket</div>
+              <div className="text-center col-span-2">Jemaah</div>
+
+            </div>
+            {packages?.map((pckg, index) => (
+              <div className={`items-center bg-white px-4 py-3 mt-3  hover:w-[1080px] shadow-[0px_0px_14.4px_2px] shadow-black/25 rounded-md mb-4 transition-all duration-500 ease-in-out`}>
                 <div className="grid grid-cols-12 items-center bg-white px-4 pb-5  mt-3 w-full ">
 
                   <div className="font-bold  text-[#031B4E] text-center">{index + 1}</div>
@@ -178,10 +179,9 @@ function Package() {
                   <div className="font-semibold col-span-2 text-[#031B4E] text-center">Rp {pckg?.price?.toLocaleString('id-ID')}</div>
                   <div className="font-semibold col-span-2 text-[#031B4E] text-center">{pckg?.quota_update}/{pckg?.quota}</div>
                 </div>
-
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </DefaultLayout>

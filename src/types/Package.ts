@@ -92,6 +92,7 @@ export interface Mitra {
     package_status?: string;
     description?: string;
     date_departure?: string;
+    date_arrival?: string;
     airline?: string;
     duration?: number;
     quota?: number;
@@ -117,6 +118,7 @@ export interface AddPackge {
   package_name?: string;
   description?: string;
   date_departure?: string | number | Date;
+  date_arrival?: string | number | Date;
   airline?: string;
   duration?: number;
   quota?: number;

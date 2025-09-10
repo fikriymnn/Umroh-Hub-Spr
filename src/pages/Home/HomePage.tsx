@@ -17,6 +17,8 @@ import hotelIcon from '../../assets/icons/Component 7 (1).svg'
 import { ThumbsUp, MessageCircle, Eye } from "lucide-react";
 import ExampleProfile from '../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
 import useDashboard from "../../hooks/useDashboard";
+import { renderStarsHotels } from "../../utils/renderStarts";
+import { formatDate } from "../../utils/formatDate";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -36,7 +38,8 @@ const data = [
 
 const HomePage: React.FC = () => {
   const {
-    dataDashboard, setDataDashboard
+    dataDashboard, setDataDashboard,
+    packages, setPackages
   } = useDashboard();
   const years = ["2023", "2024", "2025"];
   const [selectedYear, setSelectedYear] = useState<string>(years[0]);
@@ -212,7 +215,7 @@ const HomePage: React.FC = () => {
                 </div>
                 <div className="max-w-[760px] px-6">
                   <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4">
-                    {[...Array(5)].map((_, idx) => (
+                    {packages.map((pckg, idx) => (
                       <div
                         key={idx}
                         className="min-w-[260px] bg-white rounded-t-xl shadow-md flex-shrink-0"
@@ -223,23 +226,23 @@ const HomePage: React.FC = () => {
                           className="w-full object-cover h-[100px]  rounded-t-xl"
                         />
                         <div className="p-4 space-y-1">
-                          <h3 className="text-[12px] font-semibold">Umroh Paket Amanah</h3>
+                          <h3 className="text-[12px] font-semibold">{pckg?.package_name}</h3>
                           <div className="flex justify-between items-center w-8/12">
                             <div className="flex items-center space-x-1">
                               <img src={hotelIcon} alt="hotel icon" className="w-[10px] h-[10px]" />
-                              <h1 className="text-[#EFF16E] text-[10px]">★ ★ ★ ★ ★</h1>
+                              <h1 className="text-[#EFF16E] text-[10px]">{renderStarsHotels(Number(pckg?.package_hotels?.[0]?.master_hotel?.hotel_type))}</h1>
                             </div>
                             <div className="flex items-center space-x-1">
                               <img src={hotelIcon} alt="hotel icon" className="w-[10px] h-[10px]" />
-                              <h1 className="text-[#EFF16E] text-[10px]">★ ★ ★ ★ ★</h1>
+                              <h1 className="text-[#EFF16E] text-[10px]">{renderStarsHotels(Number(pckg?.package_hotels?.[0]?.master_hotel?.hotel_type))}</h1>
                             </div>
                           </div>
                           <div className="flex w-11/12 justify-between items-center">
 
-                            <p className="text-[#545454] font-semibold text-[10px]">⏱ 10 Hari</p>
-                            <p className="text-[#545454] font-semibold text-[10px]">🗓 20/10/2025 - 30/10/2025</p>
+                            <p className="text-[#545454] font-semibold text-[10px]">⏱ {pckg?.duration} Hari</p>
+                            <p className="text-[#545454] font-semibold text-[10px]">🗓 {formatDate(String(pckg?.date_departure))} - {formatDate(String(pckg?.date_arrival))}</p>
                           </div>
-                          <p className="text-[#0069D9] font-bold text-lg">Rp32.000.000</p>
+                          <p className="text-[#0069D9] font-bold text-lg">Rp{pckg?.price?.toLocaleString()}</p>
                         </div>
                       </div>
                     ))}
