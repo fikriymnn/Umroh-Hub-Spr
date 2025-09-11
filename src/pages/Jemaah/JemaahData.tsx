@@ -18,8 +18,10 @@ import { FiDownloadCloud } from "react-icons/fi";
 import { MdOutlineFilterList } from "react-icons/md";
 import { BiSearchAlt } from "react-icons/bi";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import useJemaahData from '../../hooks/useJemaahData';
+import useJemaahData from '../../hooks/Jemaah/useJemaahData';
+import { useNavigate } from 'react-router';
 function JemaahData() {
+  const navigate = useNavigate();
   const {
     jemaah,
     setFilters,
@@ -289,8 +291,8 @@ function JemaahData() {
                 </tr>
               </thead>
               <tbody>
-                {jemaah?.map((item) => (
-                  <tr key={item?.id} className="border-b text-[12px] font-medium last:border-none">
+                {jemaah?.map((item, index) => (
+                  <tr key={index} className="border-b text-[12px] font-medium last:border-none">
                     <td className="p-3">{item?.name}</td>
                     <td className="p-3">{item?.email}</td>
                     <td className="p-3">{item?.phone_number}</td>
@@ -326,6 +328,7 @@ function JemaahData() {
                               key={option}
                               onClick={() => {
                                 if (option === "Lihat Detail") {
+                                  navigate(`/JemaahData/${item.id}`)
                                   console.log("Lihat Detail");
                                 } else {
                                   console.log("Beri Tanda");

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { getAllJemaah } from '../services/jemaahServices';
+import { getAllJemaah } from '../../services/jemaahServices';
 import { isAxiosError } from 'axios';
-import { Jemaah } from '../types/Jemaah';
+import { Jemaah } from '../../types/Jemaah';
 
 const useJemaahData = () => {
     const [jemaah, setJemaah] = useState<Jemaah[]>([]);
