@@ -16,9 +16,9 @@ import promoIcon from "../../assets/icons/Lable.svg";
 import hotelIcon from '../../assets/icons/Component 7 (1).svg'
 import { ThumbsUp, MessageCircle, Eye } from "lucide-react";
 import ExampleProfile from '../../assets/images/pexels-sultan-alhuthali-175963006-18274181.png'
-import useDashboard from "../../hooks/useDashboard";
 import { renderStarsHotels } from "../../utils/renderStarts";
 import { formatDate } from "../../utils/formatDate";
+import useHomePage from "../../hooks/useHomePage";
 
 const data = [
   { bulan: '', pendapatan: 0 },
@@ -40,7 +40,7 @@ const HomePage: React.FC = () => {
   const {
     dataDashboard, setDataDashboard,
     packages, setPackages
-  } = useDashboard();
+  } = useHomePage();
   const years = ["2023", "2024", "2025"];
   const [selectedYear, setSelectedYear] = useState<string>(years[0]);
   const maxValue = Math.max(...data.map(d => d.pendapatan));

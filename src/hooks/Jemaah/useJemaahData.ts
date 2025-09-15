@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react'
-import { getAllJemaah } from '../../services/jemaahServices';
+import { getAllJemaah, getJemaahStatistic } from '../../services/jemaahServices';
 import { isAxiosError } from 'axios';
 import { Jemaah } from '../../types/Jemaah';
 
 const useJemaahData = () => {
+    const year = "2025";
+    const [statistic, setStatistic] = useState<any[]>([]);
     const [jemaah, setJemaah] = useState<Jemaah[]>([]);
     const [filters, setFilters] = useState({
         gender: '',
@@ -36,10 +38,11 @@ const useJemaahData = () => {
     };
 
     useEffect(() => {
-        getJemaah();
+        fetchJemaah();
+        fetchStatistic();
     }, [filters]);
 
-    const getJemaah = async () => {
+    const fetchJemaah = async () => {
         try {
             const queryString = buildQueryParams(filters);
             const res = await getAllJemaah(queryString);
@@ -52,13 +55,26 @@ const useJemaahData = () => {
         }
     };
 
+    const fetchStatistic = async () => {
+        try {
+            const res = await getJemaahStatistic(year);
+            console.log(res);
+            setStatistic(res.data.data.monthlyStatistics);
+        } catch (error) {
+            if (isAxiosError(error)) {
+                console.error(error.response?.data.message);
+            }
+        }
+    };
+
     return {
+        statistic, setStatistic,
         jemaah, setJemaah,
         filters, setFilters,
         filterOptions,
         mapFilterToParams,
         buildQueryParams,
-        getJemaah
+        fetchJemaah
     }
 };
 

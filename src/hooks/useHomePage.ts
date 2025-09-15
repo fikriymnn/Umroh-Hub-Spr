@@ -5,7 +5,7 @@ import { isAxiosError } from "axios";
 import { getAllPackages } from "../services/packagesServices";
 import { Package } from "../types/Package";
 
-const useDashboard = () => {
+const useHomePage = () => {
     const [dataDashboard, setDataDashboard] = useState<Dashboard>();
     const [packages, setPackages] = useState<Package[]>([]);
     const filter = 'active';
@@ -45,4 +45,4 @@ const useDashboard = () => {
     };
 };
 
-export default useDashboard;
+export default useHomePage;

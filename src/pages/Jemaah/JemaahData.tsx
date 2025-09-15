@@ -23,6 +23,7 @@ import { useNavigate } from 'react-router';
 function JemaahData() {
   const navigate = useNavigate();
   const {
+    statistic, setStatistic,
     jemaah,
     setFilters,
     filterOptions,
@@ -118,11 +119,11 @@ function JemaahData() {
           </div>
           <div className="col-span-3 bg-white h-[250px] shadow-[#5680E029] shadow-[0px_4px_16.7px_0px] rounded-[30px] flex space-x-[20px] items-center px-4">
             <ResponsiveContainer width="80%" height={200}>
-              <BarChart data={dataBar} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
-                <XAxis dataKey="name" fontSize={10} fontWeight={500} />
+              <BarChart data={statistic} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+                <XAxis dataKey="month" fontSize={10} fontWeight={500} />
                 <YAxis fontSize={10} fontWeight={500} />
                 <Tooltip />
-                <Bar dataKey="value" barSize={30} fill="url(#colorGradient)" radius={[30, 30, 0, 0]} />
+                <Bar dataKey="subtotalJamaah" barSize={30} fill="url(#colorGradient)" radius={[30, 30, 0, 0]} />
                 <defs>
                   <linearGradient id="colorGradient" x1="1" y1="0" x2="0" y2="0">
                     <stop offset="5%" stopColor="#174BB4" stopOpacity="1" />
