@@ -13,6 +13,12 @@ const useJemaahData = () => {
     });
     const filterOptions = ["Terbaru", "Terlama", "Ikhwan", "Akhwat"];
 
+    const monthNames = [
+        "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+        "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+    ];
+
+
     const mapFilterToParams = (filter: string) => {
         if (filter == 'Ikhwan') {
             return {gender: 'male', sort: ''};
@@ -58,8 +64,13 @@ const useJemaahData = () => {
     const fetchStatistic = async () => {
         try {
             const res = await getJemaahStatistic(year);
-            console.log(res);
-            setStatistic(res.data.data.monthlyStatistics);
+
+            const formatted = res.data.data.monthlyStatistics.map((item: any) => ({
+                ...item,
+                month: monthNames[item.month - 1], // ubah angka → nama bulan
+            }));
+
+            setStatistic(formatted);
         } catch (error) {
             if (isAxiosError(error)) {
                 console.error(error.response?.data.message);
