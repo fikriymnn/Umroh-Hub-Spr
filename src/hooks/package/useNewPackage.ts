@@ -8,10 +8,13 @@ type PackageFilter = 'checked' | 'active' | 'rejected';
 
 const useNewPackage = () => {
     const navigate = useNavigate();
+    //Data paket umroh
     const [packages, setPackages] = useState<Package[]>();
+    //Filter paket umroh
     const [filter, setFilter] = useState('checked');
 
     useEffect(() => {
+        //Fungsi untuk ambil data paket umroh
         const fetchPackages = async () => {
             try {
                 const res = await getAllPackages(filter);
@@ -27,10 +30,12 @@ const useNewPackage = () => {
         fetchPackages();
     }, [filter]);
 
+    //Fungsi untuk filter paket umroh
     const handleFilter = (newFilter: PackageFilter) => {
         setFilter(newFilter);
     };
 
+    //Fungsi tombol lihat detail paket umroh
     const handleDetail = (id: number) => {
         navigate(`/PackageDetail/NewPackage/${id}`);
     };

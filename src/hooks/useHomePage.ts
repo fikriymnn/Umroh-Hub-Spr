@@ -6,15 +6,18 @@ import { getAllPackages } from "../services/packagesServices";
 import { Package } from "../types/Package";
 
 const useHomePage = () => {
+    //Data dashboard
     const [dataDashboard, setDataDashboard] = useState<Dashboard>();
+    //Data paket umroh
     const [packages, setPackages] = useState<Package[]>([]);
-    const filter = 'active';
+    const filter = 'active'; //Mengambil paket yang sudah aktif saja
 
     useEffect(() => {
         fetchDataDashboard();
         fetchPackage();
     }, []);
     
+    //Fungsi untuk mengambil data dashboard
     const fetchDataDashboard = async () => {
         try {
             const res = await getDataDashboard();
@@ -27,6 +30,7 @@ const useHomePage = () => {
         }
     };
 
+    //Fungsi untuk mengambil data paket umroh
     const fetchPackage = async () => {
         try {
             const res = await getAllPackages(filter);

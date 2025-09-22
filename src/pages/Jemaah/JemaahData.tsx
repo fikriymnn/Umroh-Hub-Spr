@@ -23,11 +23,22 @@ import { useNavigate } from 'react-router';
 function JemaahData() {
   const navigate = useNavigate();
   const {
-    statistic, setStatistic,
+    showCalendar, setShowCalendar,
+    selectedDate,
+    selectedMonth, setSelectedMonth,
+    selectedYear, setSelectedYear,
+    months,
+    daysOfWeek,
+    statistic,
     jemaah,
+    openFilter, setOpenFilter,
+    selectedFilter, setSelectedFilter,
     setFilters,
     filterOptions,
     mapFilterToParams,
+    daysInMonth,
+    firstDay,
+    handleDayClick
   } = useJemaahData();
 
   const total = 565;
@@ -49,31 +60,9 @@ function JemaahData() {
     { name: "Des", value: 490 },
   ];
 
-  const [openFilter, setOpenFilter] = useState(false);
-  const [selectedFilter, setSelectedFilter] = useState("Filter");
-
-
-
   const [openMenu, setOpenMenu] = useState<number | null>(null);
   const Menus = ["Lihat Detail", "Beri Tanda"]
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [selectedMonth, setSelectedMonth] = useState(selectedDate.getMonth());
-  const [selectedYear, setSelectedYear] = useState(selectedDate.getFullYear());
 
-  const months = [
-    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
-    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
-  ];
-
-  const daysOfWeek = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
-
-  const daysInMonth = new Date(selectedYear, selectedMonth + 1, 0).getDate();
-  const firstDay = (new Date(selectedYear, selectedMonth, 1).getDay() + 6) % 7; // Senin = 0
-
-  const handleDayClick = (day: number) => {
-    setSelectedDate(new Date(selectedYear, selectedMonth, day));
-  };
   return (
     <DefaultLayout>
       <div className="w-full min-h-screen pb-16">

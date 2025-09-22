@@ -9,6 +9,7 @@ const useJemaahDetail = () => {
     const [jemaah, setJemaah] = useState<Jemaah>();
 
     useEffect(() => {
+        //Fungsi untuk mengambil data jemaah
         const fetchJemaah = async () => {
             try {
                 if (id) {

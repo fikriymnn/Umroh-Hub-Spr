@@ -5,9 +5,10 @@ import { isAxiosError } from "axios";
 
 const usePackage = () => {
     const [packages, setPackages] = useState<Package[]>();
-    const [filter, setFilter] = useState('active');
+    const [filter, setFilter] = useState('active'); //Mengambil paket umroh yang sudah aktif saja
 
     useEffect(() => {
+        //Fungsi untuk mengambil data paket umroh
         const fetchPackages = async () => {
             try {
                 const res = await getAllPackages(filter);

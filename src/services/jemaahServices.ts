@@ -12,6 +12,12 @@ export const getOneJemaah = async (id: number | string) => {
     );
 };
 
+export const getJemaahToday = async (date: number | string) => {
+    return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getJamaahToday?date=${date}`,
+        {withCredentials: true}
+    );
+};
+
 export const getJemaahStatistic = async (year: number | string) => {
     return await axios.get(`${import.meta.env.VITE_PUBLIC_URL}/getJamaahStatistic?year=${year}`,
         {withCredentials: true}

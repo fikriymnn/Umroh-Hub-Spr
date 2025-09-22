@@ -28,6 +28,7 @@ const useDetailPackage = () => {
     const currentItems = schedule.slice(startIndex, startIndex + itemPages)
 
     useEffect(() => {
+        //Fungsi untuk fetch/ambil data paket
         async function fetchPackage() {
             try {
                 if (id) {
@@ -45,6 +46,7 @@ const useDetailPackage = () => {
         fetchPackage();
     }, []);
 
+    //Fungsi untuk menolak paket umroh
     const handleRejectPackage = async () => {
         const combinedNote = [...selectedReasons, adminNote]
         .filter(Boolean)
@@ -64,6 +66,7 @@ const useDetailPackage = () => {
         }
     };
 
+    //Fungsi untuk kirim alasan paket umroh ditolak
     const addReason = (reason: string) => {
         setSelectedReasons((prev) => {
             if (!prev.includes(reason)) {
@@ -73,6 +76,7 @@ const useDetailPackage = () => {
         });
     };
 
+    //Fungsi untuk memilih alasan paket umroh ditolak
     const handleAddRejectReason = () => {
         const trimmed = adminNote.trim();
         if (trimmed && !selectedReasons.includes(trimmed)) {
@@ -81,6 +85,7 @@ const useDetailPackage = () => {
         }
     };
 
+    //Fungsi untuk terima paket umroh
     const handleAcceptPackage = async (package_status: string) => {
         console.log(`Status paket: ${package_status}`);
         
