@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import { getAllJemaah, getJemaahStatistic, getJemaahToday } from '../../services/jemaahServices';
 import { isAxiosError } from 'axios';
-import { Jemaah } from '../../types/Jemaah';
+import { Jemaah, MonthlyStatisticsJemaah, StatisticJemaah } from '../../types/Jemaah';
 
 const useJemaahData = () => {
     const year = "2025";
     //Statistik
-    const [statistic, setStatistic] = useState<any[]>([]);
+    const [statistic, setStatistic] = useState<StatisticJemaah>();
+    const [monthlyStatistics, setMonthlyStatistics] = useState<MonthlyStatisticsJemaah[]>([]);
     //Data jemaah
     const [jemaah, setJemaah] = useState<Jemaah[]>([]);
     //Get jemaah berdasarkan tanggal
@@ -104,12 +105,16 @@ const useJemaahData = () => {
         try {
             const res = await getJemaahStatistic(year);
 
+            setStatistic(res.data.data);
+
             const formatted = res.data.data.monthlyStatistics.map((item: any) => ({
                 ...item,
                 month: months[item.month - 1], //Ubah angka jadi nama bulan 
             }));
 
-            setStatistic(formatted);
+            console.log(res);
+            
+            setMonthlyStatistics(formatted);
         } catch (error) {
             if (isAxiosError(error)) {
                 console.error(error.response?.data.message);
@@ -124,6 +129,7 @@ const useJemaahData = () => {
         selectedYear, setSelectedYear,
         months,
         daysOfWeek,
+        monthlyStatistics, setMonthlyStatistics,
         statistic, setStatistic,
         jemaah, setJemaah,
         openFilter, setOpenFilter,

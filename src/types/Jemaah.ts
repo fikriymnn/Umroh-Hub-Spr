@@ -15,3 +15,15 @@ export interface Jemaah {
     visa_url: string;
     status: string;
 };
+
+export interface StatisticJemaah {
+    month: string;
+    year: number;
+    totalJamaah: number;
+    monthlyStatistics: MonthlyStatisticsJemaah[];
+};
+
+export interface MonthlyStatisticsJemaah {
+    month: number;
+    subtotalJamaah: number;
+};

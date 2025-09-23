@@ -29,6 +29,7 @@ function JemaahData() {
     selectedYear, setSelectedYear,
     months,
     daysOfWeek,
+    monthlyStatistics,
     statistic,
     jemaah,
     openFilter, setOpenFilter,
@@ -89,7 +90,7 @@ function JemaahData() {
                   <div className="bg-[#E9ECF1] p-3 rounded-full mb-1">
                     <FaUser className="text-[#2B43FF] text-lg" />
                   </div>
-                  <span className="text-xl font-bold">{total}</span>
+                  <span className="text-xl font-bold">{statistic?.totalJamaah}</span>
                 </div>
               </CircularProgressbarWithChildren>
             </div>
@@ -108,7 +109,7 @@ function JemaahData() {
           </div>
           <div className="col-span-3 bg-white h-[250px] shadow-[#5680E029] shadow-[0px_4px_16.7px_0px] rounded-[30px] flex space-x-[20px] items-center px-4">
             <ResponsiveContainer width="80%" height={200}>
-              <BarChart data={statistic} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
+              <BarChart data={monthlyStatistics} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                 <XAxis dataKey="month" fontSize={10} fontWeight={500} />
                 <YAxis fontSize={10} fontWeight={500} />
                 <Tooltip />
