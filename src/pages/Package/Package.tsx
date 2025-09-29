@@ -1,6 +1,6 @@
 import DefaultLayout from '../../layout/DefaultLayout'
 import packageIcon from '../../assets/icons/Vector (8).svg'
-import { ResponsiveContainer, BarChart, Bar, Cell, XAxis, YAxis } from 'recharts';
+import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, LabelList } from 'recharts';
 import usePackage from '../../hooks/package/usePackage';
 import { Link } from 'react-router';
 
@@ -14,21 +14,15 @@ function Package() {
   const dataBar = [
     {
       name: 'Paket A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      percentage: 70,
     },
     {
       name: 'Paket B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
+      percentage: 30,
     },
     {
       name: 'Paket C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
+       percentage: 60,
     },
   ]
 
@@ -40,7 +34,7 @@ function Package() {
           <img src={packageIcon} alt="dashboard icon" className="w-[20px] h-[20px]" />
           <h1 className="text-primary-blue font-medium">Dashboard</h1>
         </div>
-        <div className="mt-[56px] bg-blue-200 w-11/12 h-fit mx-auto py-[21px] px-[62px]">
+        <div className="mt-[56px] bg-white w-11/12 h-fit mx-auto py-[21px] px-[62px]">
           <div className="flex w-full justify-between">
             <h1 className="font-medium text-[#001F5D]">
               Paket Aktif
@@ -66,51 +60,54 @@ function Package() {
               </select>
             </div>
           </div>
-          <div className="mt-8 w-full flex flex-col lg:flex-row justify-between items-center">
-            <div className="w-full h-[200px] leftflex flex-col justify-center">
-              <ResponsiveContainer width="80%" height="100%">
-                <BarChart
-                  data={dataBar}
-                  layout="vertical"
-                  margin={{ top: 0, right: 30, left: 30, bottom: 0 }}
-                  barSize={30}
-                >
-                  <defs>
-                    <linearGradient id="promoGradient" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0%" stopColor="#10F5EA" />
-                      <stop offset="100%" stopColor="#4A98F1" />
-                    </linearGradient>
-                  </defs>
+          <div className="mt-8 w-full flex justify-between items-center">
+            <div className="w-full h-[150px] ">
+             <ResponsiveContainer width="70%" height="100%">
+              <BarChart
+                data={dataBar}
+                layout="vertical"
+                margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+                barSize={50}
+              >
+                <defs>
+                  <linearGradient id="promoGradient" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stopColor="#4A98F1" />
+                    <stop offset="100%" stopColor="#10F5EA" />
+                  </linearGradient>
+                </defs>
 
-                  <YAxis
-                    type="category"
+                <XAxis type="number" hide />
+                <YAxis type="category" dataKey="name" hide /> 
+
+                <Bar dataKey="percentage" radius={[5, 50, 5, 5]} fill="url(#promoGradient)">
+                  <LabelList
                     dataKey="name"
-                    axisLine={false}
-                    tickLine={false}
-                    tick={{ fontSize: 14, fill: "#ffffff" }}
-                    width={100}
+                    position="insideLeft"
+                    fill="#ffffff"
+                    fontSize={14}
+                    fontWeight="500"
+                    offset={10}
                   />
-                  <XAxis type="number" hide />
-                  <Bar dataKey="uv" radius={[5, 50, 5, 5]}>
-                    {dataBar.map((entry, index) => (
-                      <Cell key={`cell-${index}`} fill="url(#promoGradient)" />
-                    ))}
-                    {dataBar.map((entry, index) => (
-                      <text
-                        key={`label-${index}`}
-                        // x={(entry.uv * 3.8)} 
-                        // y={index * 55 + 25}
-                        textAnchor="end"
-                        fill="#ffffff"
-                        fontSize={12}
-                        fontWeight="bold"
-                      >
-                        {entry.uv}%
-                      </text>
-                    ))}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
+                <LabelList
+              dataKey="percentage"
+              content={({ x, y, width, value }) => (
+                <text
+                  x={Number(x ?? 0) + Number(width ?? 0) - 20}  
+                  y={Number(y ?? 0) + 30}                       
+                  fill="#ffffff"
+                  fontSize={12}
+                  fontWeight="bold"
+                  textAnchor="end"                              
+                >
+                  {value}%
+                </text>
+              )}
+            />
+
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+
             </div>
             <div className="flex gap-10">
               <div className="text-center">

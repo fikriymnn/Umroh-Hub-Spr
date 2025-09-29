@@ -277,7 +277,7 @@ function JemaahData() {
                   <th className="p-3">Gender</th>
                   <th className="p-3">KTP</th>
                   <th className="p-3">Kartu Keluarga</th>
-                  <th className="p-3">Status</th>
+                  {/* <th className="p-3">Status</th> */}
                   <th className="p-3"></th>
                 </tr>
               </thead>
@@ -290,7 +290,7 @@ function JemaahData() {
                     <td className="p-3">{item?.gender}</td>
                     <td className="p-3">{item?.ktp_url}</td>
                     <td className="p-3">{item?.kk_url}</td>
-                    <td className="p-3">
+                    {/* <td className="p-3">
                       <span
                         className={`px-2 py-0.5 rounded-full text-xs font-medium flex items-center gap-1 w-fit ${item.status === "Active"
                           ? "bg-green-100 text-green-600"
@@ -303,7 +303,7 @@ function JemaahData() {
                         ></span>
                         {item?.status}
                       </span>
-                    </td>
+                    </td> */}
                     <td className="p-3 text-[#667085] text-lg relative">
                       <BsThreeDotsVertical
                         onClick={() =>
